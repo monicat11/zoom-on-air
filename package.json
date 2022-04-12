@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node api/index.js",
+    "start": "node api/index.js",
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
     "build": "webpack --config=Scripts/config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/node": "^1.9.0",
     "express": "^4.17.3",
     "lifxjs": "^1.1.0",
-    "@vercel/node": "^1.9.0"
+    "webpack": "^5.72.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
   }
 }
