@@ -16,6 +16,10 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
 
+app.get("/test", (req, res) => {
+    res.json({ message: "Test from server!" });
+});
+
 app.post("/meetingEvent", (req, res) => {
     const authValid =
     request.headers['authorization'] === process.env.ZOOM_WEBHOOK_TOKEN;
