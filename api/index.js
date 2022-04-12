@@ -12,10 +12,6 @@ const devicePrefix = 'zoom_';
 const participantJoinedEvent = 'meeting.participant_joined';
 const participantLeftEvent = 'meeting.participant_left';
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
-
 app.get("/test", (req, res) => {
     res.json({ message: "Test from server!" });
 });
