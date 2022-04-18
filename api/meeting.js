@@ -8,7 +8,7 @@ export default async (request, response) => {
   const authValid =
     request.headers['authorization'] === process.env.ZOOM_WEBHOOK_TOKEN;
     console.log("Request Headers: "+JSON.stringify(request.headers));
-    console.log("Request Body Event: " + JSON.stringify(request.body.event));
+    console.log("Request Body: " + JSON.stringify(request.body.event));
   const event = request.body.event;
   const participant = request.body.payload.object.participant;
 
