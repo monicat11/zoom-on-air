@@ -7,7 +7,8 @@ const participantLeftEvent = 'meeting.participant_left';
 export default async (request, response) => {
   const authValid =
     request.headers['authorization'] === process.env.ZOOM_WEBHOOK_TOKEN;
-    console.log("Request Headers: " + JSON.stringify(request.body.event));
+    console.log("Request Headers: "+JSON.stringify(request.event.headers));
+    console.log("Request Body Event: " + JSON.stringify(request.body.event));
   const event = request.body.event;
   const participant = request.body.payload.object.participant;
 
@@ -18,6 +19,7 @@ export default async (request, response) => {
 
   if (!authValid || !isParticipantEvent) {
     // just return a 200, we don't want zoom to keep retrying for a non-2xx error;
+    console.log("Auth invalid")
     return response.status(200).send({});
   }
 

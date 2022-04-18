@@ -20,8 +20,7 @@ module.exports = {
             "http":false,
             "net":false,
             "crypto":false,
-            "zlib":false,
-
+            "zlib":false
         },
     }
 }

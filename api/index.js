@@ -1,19 +1,28 @@
-// server/index.js
-
 const express = require("express");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const lifx=require("lifxjs");
 const getLifxDevices=require("./lifx.js");
+const http = require("http");
+// const app = express();
+const app = require("./app");
+const { exampleProxy } = require("./middleware/proxy.js");
+const server = http.createServer(app);
+require("dotenv").config();
+require("./config/database").connect();
 
 const PORT = process.env.PORT || 3001;
-
-const app = express();
 
 const devicePrefix = 'zoom_';
 const participantJoinedEvent = 'meeting.participant_joined';
 const participantLeftEvent = 'meeting.participant_left';
 
-app.get("/test", (req, res) => {
-    res.json({ message: "Test from server!" });
+// app.use('/test', createProxyMiddleware({ target: 'http://localhost:3001', changeOrigin: true }));
+// app.use('/api',exampleProxy);
+
+app.get("/api/test", (req, res) => {
+    // res.json({ message: "Test from server!" });
+    res.send("test api called");
+    console.log("test api called");
 });
 
 app.post("/meetingEvent", (req, res) => {
