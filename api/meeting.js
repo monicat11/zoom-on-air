@@ -7,7 +7,7 @@ const participantLeftEvent = 'meeting.participant_left';
 export default async (request, response) => {
   const authValid =
     request.headers['authorization'] === process.env.ZOOM_WEBHOOK_TOKEN;
-    console.log("Request Headers: "+JSON.stringify(request.event.headers));
+    console.log("Request Headers: "+JSON.stringify(request.headers));
     console.log("Request Body Event: " + JSON.stringify(request.body.event));
   const event = request.body.event;
   const participant = request.body.payload.object.participant;
