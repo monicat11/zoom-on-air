@@ -16,7 +16,7 @@ export default async (request, response) => {
     console.log("Request Headers: "+JSON.stringify(request.headers));
     console.log("Request Body: " + JSON.stringify(request.body.event));
   const event = request.body.event;
-  const presenceStatus=request.body.requestBody.payload.object.presenceStatus;
+  const presenceStatus=request.body.payload.object.presenceStatus;
   const participant = request.body.payload.object.participant;
 
   const isParticipantEvent =
