@@ -17,7 +17,7 @@ export default async (request, response) => {
     console.log("Request Body: " + JSON.stringify(request.body.event));
   const event = request.body.event;
   const presenceStatus=request.body.payload.object.presenceStatus;
-  const participant = request.body.payload.object.participant;
+  const participantEmail = request.body.payload.object.email;
 
   const isParticipantEvent =
     event &&
@@ -41,9 +41,9 @@ export default async (request, response) => {
   console.log('Zoom authenticated...');
   console.log('Event parse successful...');
 
-  const isValidParticipant = participant.email === process.env.ZOOM_PARTICIPANT;
+  const isValidParticipant = participantEmail === process.env.ZOOM_PARTICIPANT;
   if (!isValidParticipant) {
-    console.log("Participant: " + participant.email);
+    console.log("Participant: " + participantEmail);
     return response.status(200).send({});
   }
 
