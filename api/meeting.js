@@ -15,10 +15,11 @@ export default async (request, response) => {
     request.headers['authorization'] === process.env.ZOOM_WEBHOOK_TOKEN;
     console.log("Request Headers: "+JSON.stringify(request.headers));
     console.log("Request Body: " + JSON.stringify(request.body));
-    console.log("Request Body: " + JSON.stringify(request.body.payload));
+    console.log("presenceStatus: " + JSON.stringify(request.body.payload));
   const event = request.body.event;
-  const presenceStatus=request.body.payload.object.presenceStatus;
+  const presenceStatus=request.body.payload.object.presence_status;
   const participantEmail = request.body.payload.object.email;
+  console.log("presenceStatus: " + presenceStatus);
 
   const isParticipantEvent =
     event &&
@@ -44,7 +45,6 @@ export default async (request, response) => {
 
   const isValidParticipant = participantEmail === process.env.ZOOM_PARTICIPANT;
   if (!isValidParticipant) {
-    console.log("Participant: " + participantEmail);
     return response.status(200).send({});
   }
 
