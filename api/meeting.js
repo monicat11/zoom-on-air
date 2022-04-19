@@ -21,7 +21,7 @@ export default async (request, response) => {
 
   const isParticipantEvent =
     event &&
-    participant 
+    participantEmail 
 
   if (!authValid) {
     // just return a 200, we don't want zoom to keep retrying for a non-2xx error;
@@ -30,7 +30,7 @@ export default async (request, response) => {
   }
 
   if(!isParticipantEvent) {
-    console.log("The participant or event from the webhook request body was null")
+    console.log("The participant email or event from the webhook request body was null")
   }
 
   if(event === userPresenseStatusUpdated) {
