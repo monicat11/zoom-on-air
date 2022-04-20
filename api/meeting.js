@@ -64,9 +64,7 @@ export default async (request, response) => {
         x.label.startsWith(devicePrefix)
     );
 
-    const turnRed = (presenceStatus === presenceMeeting) || 
-    (presenceStatus === presenceAway) || (presenceStatus === presencePhoneCall) 
-    || (presenceStatus === presenceDND);
+    const turnRed = (presenceStatus === presenceMeeting) || (presenceStatus === presencePhoneCall);
 
     console.log(`${turnRed ? 'Turning red!' : 'Turning green!'}`);
     const promises = filtered.map((device) =>
